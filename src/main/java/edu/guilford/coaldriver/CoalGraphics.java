@@ -12,6 +12,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JPanel;
@@ -58,7 +59,13 @@ public class CoalGraphics extends JPanel {
         //g2 is a graphics objects
         //Check out Loop in Lab 10
         try {
-            Scanner fileScan = new Scanner(new File(CoalDriver.class.getResource("/coalEmisions_Past_Future.txt").toURI()));
+            Scanner fileScan = null;
+            try {
+                fileScan = new Scanner(new File(CoalDriver.class.getResource("/coalEmisions_Past_Future.txt").toURI()));
+            } catch (URISyntaxException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
             while (fileScan.hasNext()) {
                 //  System.out.println(fileScan.next());
 
